@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="fw-bold mb-3">Helmet Detection Dashboard</h3>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <h6>Helmet Detected</h6>
+            <h2>{{ helmet }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card stat-card {% if violation=='NO HELMET' %}bg-danger text-white{% else %}bg-success text-white{% endif %}">
+            <h6>Status</h6>
+            <h4>{{ violation }}</h4>
+        </div>
+    </div>
+</div>
+
+<div class="card p-4">
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="image" class="form-control mb-3" required>
+<button class="btn btn-primary">Detect Helmet</button>
+</form>
+
+{% if result %}
+<hr>
+<img src="/{{ result }}" class="img-fluid rounded shadow">
+{% endif %}
+</div>
+
+{% endblock %}

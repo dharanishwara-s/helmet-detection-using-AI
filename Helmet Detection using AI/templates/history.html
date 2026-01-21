@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="fw-bold">Detection History</h3>
+
+<table class="table table-hover">
+<tr>
+<th>ID</th>
+<th>Image</th>
+<th>Helmet</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+
+{% for r in rows %}
+<tr>
+<td>{{ r[0] }}</td>
+<td><img src="/static/results/{{ r[1] }}" width="120"></td>
+<td>{{ r[2] }}</td>
+<td>
+<span class="badge {% if r[3]=='NO HELMET' %}bg-danger{% else %}bg-success{% endif %}">
+{{ r[3] }}
+</span>
+</td>
+<td>{{ r[4] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

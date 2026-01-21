@@ -1,0 +1,4 @@
+helmet
+no_helmet
+seatbelt
+no_seatbelt
